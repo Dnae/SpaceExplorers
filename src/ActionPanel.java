@@ -31,7 +31,6 @@ public class ActionPanel extends JPanel{
 		
 		new Thread(){
 			public void run(){
-				long startTime = System.nanoTime();
 				for(SpaceObject so : thinglist){
 					so.updateSO(currentx, currenty);
 
@@ -73,9 +72,6 @@ public class ActionPanel extends JPanel{
 				if(numast < 20){
 					addThing(new Asteroid());
 				}
-				
-				long endTime = System.nanoTime();
-				System.out.println("Millis: " + ((endTime - startTime)/1000000));
 			}
 		}.start();
 	}

@@ -13,7 +13,7 @@ public abstract class CelestialBody extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(bodyimage, 0, 0, null);
+		g.drawImage(bodyimage, 0, 0, size, size, null);
 
 	}	
 	

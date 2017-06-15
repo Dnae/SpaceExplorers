@@ -18,13 +18,8 @@ public class Star extends JPanel{
 		setOpaque(false);
 		
 		this.size = size;
-		
-		try {
-			star = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/star.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		star = ImageBank.getImage("star");
 		
 		setSize(size, size);
 	}
@@ -32,7 +27,7 @@ public class Star extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(star, 0, 0, null);
+		g.drawImage(star, 0, 0, size, size, null);
 
 	}
 }

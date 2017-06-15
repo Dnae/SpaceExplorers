@@ -13,14 +13,9 @@ public class Sun extends CelestialBody{
 		setOpaque(false);
 
 		this.size = size;
-		
-		try {
-			bodyimage = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/sun.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
+		bodyimage = ImageBank.getImage("sun");
+
 		setSize(size, size);
 	}
 	

@@ -19,11 +19,8 @@ public class Asteroid extends SpaceObject{
 		this.sizex = (random.nextInt(180) + 20);
 		this.sizey = sizex + (random.nextInt(20) - 10);
 		
-		try {
-			img = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/asteroid.png")).getScaledInstance(sizex, sizey, Image.SCALE_DEFAULT);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		img = ImageBank.getImage("asteroid");
+		
 
 		int locx, locy;
 		
@@ -54,6 +51,6 @@ public class Asteroid extends SpaceObject{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(img, 0, 0, null);
+		g.drawImage(img, 0, 0, sizex, sizey, null);
 	}	
 }

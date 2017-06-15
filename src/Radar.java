@@ -30,14 +30,9 @@ public class Radar extends JPanel{
 		setLayout(null);
 		
 		size = SystemVariables.getHeight()/5;
-		
-		try {
-			radar = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/radar.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
+		radar = ImageBank.getImage("radar");
+
 		setSize(size, size);
 	}
 	
@@ -71,7 +66,7 @@ public class Radar extends JPanel{
 		Area circle = new Area(new Ellipse2D.Double(0, 0, size, size));
 		rect.subtract(circle);
 
-		g2d.drawImage(radar, 0, 0, null);
+		g2d.drawImage(radar, 0, 0, size, size, null);
 		
 		for(CelestialBody cb : radarplanets){
 			

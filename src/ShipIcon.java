@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,8 +13,8 @@ import javax.swing.JPanel;
 
 public class ShipIcon extends JPanel{
 
-	BufferedImage ship = null;
-	BufferedImage blast = null;
+	Image ship = null;
+	Image blast = null;
 	
 	int centerX, centerY;
 	
@@ -51,19 +52,10 @@ public class ShipIcon extends JPanel{
 	}
 	
 	private void loadImages(){
-		try {
-			ship = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/ship.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			
+		ship = ImageBank.getImage("ship");
 		
-		try {
-			blast = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/blast.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		blast = ImageBank.getImage("blast");
 	}
 	
 	@Override
@@ -85,7 +77,7 @@ public class ShipIcon extends JPanel{
 
 		// 1. translate the object so that you rotate it around the 
 		//    center (easier :))
-		at.translate(-ship.getWidth()/2, -ship.getHeight()/2);
+		at.translate(-25, -25);
 
 		// draw the image
 		Graphics2D g2d = (Graphics2D) g;
@@ -96,7 +88,7 @@ public class ShipIcon extends JPanel{
 		
 		if(blastOn){
 		
-			at.translate(0, ship.getHeight()/1.2);
+			at.translate(0, 50/1.2);
 
 			g2d.drawImage(blast, at, null);
 		}

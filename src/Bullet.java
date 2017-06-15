@@ -19,12 +19,7 @@ public class Bullet extends SpaceObject{
 		this.sizex = 6;
 		this.sizey = 6;
 
-		try {
-			img = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/bullet.png")).getScaledInstance(sizex, sizey, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		img = ImageBank.getImage("bullet");
 
 		setLocation(SystemVariables.getWidth()/2, SystemVariables.getHeight()/2);
 		setSize(sizex, sizey);
@@ -34,7 +29,7 @@ public class Bullet extends SpaceObject{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(img, 0, 0, null);
+		g.drawImage(img, 0, 0, sizex, sizey, null);
 	
 	}
 }

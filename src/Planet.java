@@ -26,18 +26,10 @@ public class Planet extends CelestialBody{
 		
 		this.index = index;
 		this.size = size;
-		
-		try {
-			bodyimage = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/planet" + index + ".png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			shadow = ImageIO.read(new File("C:/Users/Dnae/workspace/SpaceExplorers/shadow.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		bodyimage = ImageBank.getImage("planet" + index);
+	
+		shadow = ImageBank.getImage("shadow");
 		
 		setSize(size, size);
 	}
@@ -64,7 +56,7 @@ public class Planet extends CelestialBody{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(bodyimage, 0, 0, null);
+		g.drawImage(bodyimage, 0, 0, size, size, null);
 
 		// create the transform, note that the transformations happen
 		// in reversed order (so check them backwards)
@@ -77,12 +69,12 @@ public class Planet extends CelestialBody{
 		at.rotate(rotation);
 
 		// 2. just a scale because this image is big
-		at.scale(1, 1);
-
-		// 1. translate the object so that you rotate it around the 
-		//    center (easier :))
+		double sizz = size;
+		double scale = sizz/500;
+		
 		at.translate(-getWidth() / 2, -getHeight() / 2);
-
+		at.scale(scale, scale);
+		
 		// draw the image
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(shadow, at, null);
