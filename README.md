@@ -1,4 +1,4 @@
 # SpaceExplorers
 Space exploration game
 
-Private project built on randomizing world from seed.
+Private 2D-game project built on randomizing world from seed.
